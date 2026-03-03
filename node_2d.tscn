@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://53mdjcqvtrli"]
+[gd_scene load_steps=10 format=3 uid="uid://53mdjcqvtrli"]
 
 [ext_resource type="Script" path="res://node_2d.py" id="1_epypp"]
 [ext_resource type="Texture2D" uid="uid://tny40o4dfrgm" path="res://PostBuilderTitle.png" id="2_kdubu"]
 [ext_resource type="Texture2D" uid="uid://brsaiupvlt5p5" path="res://Jeran.png" id="5_q6r6c"]
 [ext_resource type="Script" uid="uid://bwmwfv1tnirix" path="res://jeran.gd" id="6_kdubu"]
-[ext_resource type="FontFile" uid="uid://dja8voxdevpcj" path="res://Essays1743.ttf" id="7_d21ai"]
 [ext_resource type="Script" uid="uid://bdaoi5ooqvgwa" path="res://GenericEntryGUIScript.gd" id="7_rj586"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y32ns"]
@@ -18,7 +17,6 @@ ScrollContainer/styles/focus = SubResource("StyleBoxFlat_y32ns")
 ScrollContainer/styles/panel = SubResource("StyleBoxFlat_wtcfe")
 
 [sub_resource type="LabelSettings" id="LabelSettings_kdubu"]
-font = ExtResource("7_d21ai")
 font_size = 24
 
 [node name="Node2D" type="Node2D"]
@@ -30,7 +28,21 @@ process_physics_priority = 0
 process_thread_group = 0
 physics_interpolation_mode = 0
 auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
 top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+use_parent_material = false
 position = Vector2(-40, -2)
 rotation = 0.0
 scale = Vector2(1, 1)
