@@ -1,0 +1,617 @@
+[gd_scene load_steps=11 format=3 uid="uid://53mdjcqvtrli"]
+
+[ext_resource type="Script" path="res://node_2d.py" id="1_epypp"]
+[ext_resource type="Texture2D" uid="uid://tny40o4dfrgm" path="res://PostBuilderTitle.png" id="2_kdubu"]
+[ext_resource type="Texture2D" uid="uid://brsaiupvlt5p5" path="res://Jeran.png" id="5_q6r6c"]
+[ext_resource type="Script" uid="uid://bwmwfv1tnirix" path="res://jeran.gd" id="6_kdubu"]
+[ext_resource type="FontFile" uid="uid://dja8voxdevpcj" path="res://Essays1743.ttf" id="7_d21ai"]
+[ext_resource type="Script" uid="uid://bdaoi5ooqvgwa" path="res://GenericEntryGUIScript.gd" id="7_rj586"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y32ns"]
+bg_color = Color(0.695919, 0.54962575, 0.6434145, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtcfe"]
+bg_color = Color(0.11339494, 0.17267528, 0.116697066, 1)
+
+[sub_resource type="Theme" id="Theme_0e48y"]
+ScrollContainer/styles/focus = SubResource("StyleBoxFlat_y32ns")
+ScrollContainer/styles/panel = SubResource("StyleBoxFlat_wtcfe")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kdubu"]
+font = ExtResource("7_d21ai")
+font_size = 24
+
+[node name="Node2D" type="Node2D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+top_level = false
+position = Vector2(-40, -2)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = ExtResource("1_epypp")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 2.0
+offset_right = 1151.0
+offset_bottom = 1038.0
+
+[node name="PostBuilderTitle" type="Sprite2D" parent="Control/Panel"]
+modulate = Color(0.6040861, 0.5273078, 0.37894097, 1)
+position = Vector2(510.00003, 53.999996)
+scale = Vector2(0.2798919, 0.22461794)
+texture = ExtResource("2_kdubu")
+
+[node name="IndexPage" type="Control" parent="Control"]
+anchors_preset = 0
+offset_left = 1142.0
+offset_top = -13.0
+offset_right = 1182.0
+offset_bottom = 27.0
+
+[node name="pickIssueDirectory" type="Button" parent="Control/IndexPage"]
+self_modulate = Color(1, 1, 0.49411765, 1)
+layout_mode = 0
+offset_left = -649.0
+offset_top = 821.0
+offset_right = -493.0
+offset_bottom = 852.0
+text = "Pick Directory Path"
+
+[node name="IssuePath" type="LineEdit" parent="Control/IndexPage/pickIssueDirectory"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 32.0
+offset_right = 156.0
+offset_bottom = 63.0
+placeholder_text = "filepath"
+
+[node name="IssueDialog" type="FileDialog" parent="Control/IndexPage/pickIssueDirectory/IssuePath"]
+oversampling_override = 1.0
+title = "Open a Directory"
+position = Vector2i(10, 30)
+size = Vector2i(1065, 590)
+file_mode = 2
+access = 2
+use_native_dialog = true
+
+[node name="firstBuild" type="CheckButton" parent="Control/IndexPage"]
+modulate = Color(0, 1, 1, 1)
+layout_mode = 0
+offset_left = -664.0
+offset_top = 787.0
+offset_right = -491.0
+offset_bottom = 818.0
+text = "FirstTimeSetup"
+
+[node name="Build" type="Button" parent="Control/IndexPage"]
+modulate = Color(0, 1, 1, 1)
+layout_mode = 0
+offset_left = -529.0
+offset_top = 927.0
+offset_right = -458.0
+offset_bottom = 1001.0
+text = "Publish!"
+
+[node name="IssueNumber" type="LineEdit" parent="Control/IndexPage"]
+layout_mode = 0
+offset_left = -573.0
+offset_top = 886.0
+offset_right = -504.4375
+offset_bottom = 917.0
+
+[node name="issueNumberText" type="Label" parent="Control/IndexPage/IssueNumber"]
+layout_mode = 0
+offset_left = -59.0
+offset_top = 2.0
+offset_right = -4.0
+offset_bottom = 25.0
+text = "Issue #"
+
+[node name="Quote of the Week" type="TextEdit" parent="Control/IndexPage"]
+layout_mode = 0
+offset_left = -797.0
+offset_top = 919.0
+offset_right = -606.0
+offset_bottom = 970.0
+placeholder_text = "Quote of the Issue"
+wrap_mode = 1
+
+[node name="QuoteAuthor" type="LineEdit" parent="Control/IndexPage"]
+layout_mode = 0
+offset_left = -796.0
+offset_top = 973.0
+offset_right = -608.0
+offset_bottom = 1004.0
+placeholder_text = "Author(s) "
+
+[node name="PickFrontpageButton" type="Button" parent="Control/IndexPage"]
+layout_mode = 0
+offset_left = -791.0
+offset_top = 787.0
+offset_right = -668.0
+offset_bottom = 818.0
+text = "Pick Frontpage"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/IndexPage"]
+layout_mode = 0
+offset_left = -797.0
+offset_top = 820.0
+offset_right = -653.0
+offset_bottom = 916.0
+theme = SubResource("Theme_0e48y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/IndexPage/ScrollContainer"]
+layout_mode = 2
+
+[node name="Jeran" type="Sprite2D" parent="Control/IndexPage"]
+position = Vector2(-275, 905)
+scale = Vector2(-1.327, 1.327)
+texture = ExtResource("5_q6r6c")
+script = ExtResource("6_kdubu")
+
+[node name="Button" type="Button" parent="Control/IndexPage/Jeran"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = 14.317986
+offset_top = -52.750557
+offset_right = 175.318
+offset_bottom = 15.971733
+scale = Vector2(-0.25680962, 0.7635311)
+flat = true
+
+[node name="Label" type="Label" parent="Control/IndexPage/Jeran"]
+offset_left = 187.6413
+offset_top = -79.87943
+offset_right = 428.6413
+offset_bottom = 29.120567
+scale = Vector2(-0.847194, 0.90808874)
+size_flags_horizontal = 4
+label_settings = SubResource("LabelSettings_kdubu")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LoadIssue" type="Button" parent="Control/IndexPage"]
+layout_mode = 0
+offset_left = -448.0
+offset_top = 936.0
+offset_right = -395.0
+offset_bottom = 990.0
+text = "Load
+ Issue
+"
+
+[node name="SaveIssue" type="Button" parent="Control/IndexPage"]
+layout_mode = 0
+offset_left = -589.0
+offset_top = 934.0
+offset_right = -536.0
+offset_bottom = 988.0
+text = "Save
+ Issue
+"
+
+[node name="GenericEntry" type="Control" parent="Control"]
+anchors_preset = 0
+offset_left = 1146.0
+offset_top = 13.0
+offset_right = 1186.0
+offset_bottom = 53.0
+script = ExtResource("7_rj586")
+
+[node name="SubtractComic" type="Button" parent="Control/GenericEntry"]
+modulate = Color(1, 0.81960785, 0.83137256, 1)
+layout_mode = 0
+offset_left = -263.0
+offset_top = 721.0
+offset_right = -204.0
+offset_bottom = 752.0
+text = "Delete"
+
+[node name="Cancel" type="Button" parent="Control/GenericEntry"]
+layout_mode = 0
+offset_left = -202.0
+offset_top = 721.0
+offset_right = -142.0
+offset_bottom = 752.0
+text = "Cancel"
+
+[node name="Pick File" type="Button" parent="Control/GenericEntry"]
+layout_mode = 0
+offset_left = -414.0
+offset_top = 90.0
+offset_right = -304.0
+offset_bottom = 121.0
+disabled = true
+text = "Pick File 
+"
+
+[node name="ComicPreview" type="TextureRect" parent="Control/GenericEntry/Pick File"]
+layout_mode = 0
+offset_left = -390.0
+offset_top = -31.0
+offset_right = -8.0
+offset_bottom = 629.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="Control/GenericEntry/Pick File/ComicPreview"]
+z_index = -1
+layout_mode = 0
+offset_top = 35.0
+offset_right = 382.0
+offset_bottom = 696.0
+color = Color(0, 0.12882268, 0.13000935, 1)
+
+[node name="FilePath" type="LineEdit" parent="Control/GenericEntry/Pick File"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 32.0
+offset_right = 256.0
+offset_bottom = 63.0
+placeholder_text = "filepath"
+editable = false
+
+[node name="FileDialog" type="FileDialog" parent="Control/GenericEntry/Pick File/FilePath"]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(10, 36)
+size = Vector2i(1065, 590)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.gif", "*.png", "*.jpg", "*.jpeg")
+use_native_dialog = true
+
+[node name="Pick Thumbnail" type="Button" parent="Control/GenericEntry"]
+layout_mode = 0
+offset_left = -415.0
+offset_top = 154.0
+offset_right = -288.0
+offset_bottom = 185.0
+text = "Pick Thumbnail
+"
+
+[node name="ThumbPreview" type="TextureRect" parent="Control/GenericEntry/Pick Thumbnail"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 449.0
+offset_right = 148.0
+offset_bottom = 599.0
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Control/GenericEntry/Pick Thumbnail/ThumbPreview"]
+z_index = -1
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+color = Color(0, 0.12882268, 0.13000935, 1)
+
+[node name="ThumbnailPath" type="LineEdit" parent="Control/GenericEntry/Pick Thumbnail"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 264.0
+offset_bottom = 63.0
+placeholder_text = "filepath"
+editable = false
+
+[node name="thumbnailDialog" type="FileDialog" parent="Control/GenericEntry/Pick Thumbnail/ThumbnailPath"]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(10, 30)
+size = Vector2i(1065, 590)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.gif", "*.png", "*.jpg", "*.jpeg")
+use_native_dialog = true
+
+[node name="TitleName" type="LineEdit" parent="Control/GenericEntry"]
+layout_mode = 0
+offset_left = -416.0
+offset_top = 218.0
+offset_right = -153.0
+offset_bottom = 249.0
+placeholder_text = "Title"
+
+[node name="Author" type="LineEdit" parent="Control/GenericEntry"]
+layout_mode = 0
+offset_left = -416.0
+offset_top = 250.0
+offset_right = -157.0
+offset_bottom = 281.0
+placeholder_text = "Author(s) "
+
+[node name="Link" type="LineEdit" parent="Control/GenericEntry"]
+layout_mode = 0
+offset_left = -416.0
+offset_top = 282.0
+offset_right = -157.0
+offset_bottom = 313.0
+placeholder_text = "Social Link (optional)"
+
+[node name="CaptionText" type="TextEdit" parent="Control/GenericEntry"]
+layout_mode = 0
+offset_left = -416.0
+offset_top = 317.0
+offset_right = -154.0
+offset_bottom = 447.0
+placeholder_text = "Caption"
+wrap_mode = 1
+
+[node name="Tags" type="TextEdit" parent="Control/GenericEntry"]
+layout_mode = 0
+offset_left = -415.0
+offset_top = 449.0
+offset_right = -160.0
+offset_bottom = 507.0
+placeholder_text = "Tags, Metadata, SEO"
+
+[node name="AltText" type="TextEdit" parent="Control/GenericEntry"]
+layout_mode = 0
+offset_left = -415.0
+offset_top = 508.0
+offset_right = -160.0
+offset_bottom = 596.0
+placeholder_text = "Alt Text"
+wrap_mode = 1
+
+[node name="Submission Text" type="TextEdit" parent="Control/GenericEntry"]
+layout_mode = 0
+offset_left = -804.0
+offset_top = 94.0
+offset_right = -423.0
+offset_bottom = 757.0
+placeholder_text = "Text Content Preview"
+editable = false
+
+[node name="AddEntry" type="Button" parent="Control/GenericEntry"]
+modulate = Color(0.99999946, 0.99559194, 0.39140597, 1)
+layout_mode = 0
+offset_left = -257.0
+offset_top = 607.0
+offset_right = -148.0
+offset_bottom = 718.0
+text = "Save Entry
+"
+
+[node name="Comics" type="Label" parent="Control/GenericEntry"]
+modulate = Color(0.9372549, 0.7294118, 0, 1)
+layout_mode = 0
+offset_left = -1102.0
+offset_top = -13.0
+offset_right = -872.0
+offset_bottom = 36.0
+text = "Comics"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/GenericEntry/Comics"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 22.0
+offset_right = 286.0
+offset_bottom = 118.0
+theme = SubResource("Theme_0e48y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GenericEntry/Comics/ScrollContainer"]
+layout_mode = 2
+
+[node name="Articles" type="Label" parent="Control/GenericEntry"]
+modulate = Color(0.9372549, 0.7294118, 0, 1)
+layout_mode = 0
+offset_left = -1104.0
+offset_top = 103.0
+offset_right = -874.0
+offset_bottom = 152.0
+text = "Articles"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/GenericEntry/Articles"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 22.0
+offset_right = 286.0
+offset_bottom = 118.0
+theme = SubResource("Theme_0e48y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GenericEntry/Articles/ScrollContainer"]
+layout_mode = 2
+
+[node name="ContinuedSeries" type="Label" parent="Control/GenericEntry"]
+modulate = Color(0.9372549, 0.7294118, 0, 1)
+layout_mode = 0
+offset_left = -1103.0
+offset_top = 218.0
+offset_right = -873.0
+offset_bottom = 267.0
+text = "Continued Series"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/GenericEntry/ContinuedSeries"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 22.0
+offset_right = 286.0
+offset_bottom = 118.0
+theme = SubResource("Theme_0e48y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GenericEntry/ContinuedSeries/ScrollContainer"]
+layout_mode = 2
+
+[node name="NewSeries" type="Label" parent="Control/GenericEntry"]
+modulate = Color(0.9372549, 0.7294118, 0, 1)
+layout_mode = 0
+offset_left = -1103.0
+offset_top = 335.0
+offset_right = -873.0
+offset_bottom = 384.0
+text = "New Series"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/GenericEntry/NewSeries"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 22.0
+offset_right = 286.0
+offset_bottom = 118.0
+theme = SubResource("Theme_0e48y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GenericEntry/NewSeries/ScrollContainer"]
+layout_mode = 2
+
+[node name="ShortStories" type="Label" parent="Control/GenericEntry"]
+modulate = Color(0.9372549, 0.7294118, 0, 1)
+layout_mode = 0
+offset_left = -1105.0
+offset_top = 450.0
+offset_right = -875.0
+offset_bottom = 499.0
+text = "Short Stories"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/GenericEntry/ShortStories"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 22.0
+offset_right = 286.0
+offset_bottom = 118.0
+theme = SubResource("Theme_0e48y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GenericEntry/ShortStories/ScrollContainer"]
+layout_mode = 2
+
+[node name="Poetry" type="Label" parent="Control/GenericEntry"]
+modulate = Color(0.9372549, 0.7294118, 0, 1)
+layout_mode = 0
+offset_left = -1106.0
+offset_top = 564.0
+offset_right = -876.0
+offset_bottom = 613.0
+text = "Poetry"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/GenericEntry/Poetry"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 22.0
+offset_right = 286.0
+offset_bottom = 118.0
+theme = SubResource("Theme_0e48y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GenericEntry/Poetry/ScrollContainer"]
+layout_mode = 2
+
+[node name="FanArt" type="Label" parent="Control/GenericEntry"]
+modulate = Color(0.9372549, 0.7294118, 0, 1)
+layout_mode = 0
+offset_left = -1106.0
+offset_top = 678.0
+offset_right = -876.0
+offset_bottom = 727.0
+text = "FanArt
+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/GenericEntry/FanArt"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 22.0
+offset_right = 286.0
+offset_bottom = 160.0
+theme = SubResource("Theme_0e48y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GenericEntry/FanArt/ScrollContainer"]
+layout_mode = 2
+
+[node name="Incomplete" type="Label" parent="Control/GenericEntry"]
+modulate = Color(0.9372549, 0.7294118, 0, 1)
+layout_mode = 0
+offset_left = -1104.0
+offset_top = 837.0
+offset_right = -874.0
+offset_bottom = 860.0
+text = "Incomplete"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/GenericEntry/Incomplete"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 23.0
+offset_right = 284.0
+offset_bottom = 151.0
+theme = SubResource("Theme_0e48y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GenericEntry/Incomplete/ScrollContainer"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="Control/GenericEntry"]
+self_modulate = Color(1, 1, 0.17254902, 1)
+layout_mode = 0
+offset_left = -413.0
+offset_top = 55.0
+offset_right = -254.0
+offset_bottom = 86.0
+item_count = 7
+popup/item_0/text = "Comics"
+popup/item_0/id = 0
+popup/item_1/text = "Articles"
+popup/item_1/id = 1
+popup/item_2/text = "ContinuedSeries"
+popup/item_2/id = 2
+popup/item_3/text = "NewSeries"
+popup/item_3/id = 3
+popup/item_4/text = "ShortStories"
+popup/item_4/id = 4
+popup/item_5/text = "Poetry"
+popup/item_5/id = 5
+popup/item_6/text = "FanArt"
+popup/item_6/id = 6
+
+[node name="SubmissionTypeText" type="Label" parent="Control/GenericEntry/OptionButton"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -21.0
+offset_right = 45.0
+offset_bottom = 2.0
+text = "Type"
+
+[node name="SaveIssueDialog" type="FileDialog" parent="Control/GenericEntry"]
+oversampling_override = 1.0
+position = Vector2i(10, 36)
+size = Vector2i(1065, 590)
+access = 2
+filters = PackedStringArray("*.txt")
+use_native_dialog = true
+
+[node name="LoadIssueDialog" type="FileDialog" parent="Control/GenericEntry"]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(10, 36)
+size = Vector2i(1065, 590)
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[connection signal="pressed" from="Control/IndexPage/pickIssueDirectory" to="Control/GenericEntry" method="_on_pick_issue_directory_pressed"]
+[connection signal="dir_selected" from="Control/IndexPage/pickIssueDirectory/IssuePath/IssueDialog" to="Control/GenericEntry" method="_on_issue_dialog_dir_selected"]
+[connection signal="pressed" from="Control/IndexPage/Build" to="Control/GenericEntry" method="_on_build_pressed"]
+[connection signal="pressed" from="Control/IndexPage/PickFrontpageButton" to="Control/GenericEntry" method="_on_pick_frontpage_button_pressed"]
+[connection signal="pressed" from="Control/IndexPage/Jeran/Button" to="Control/IndexPage/Jeran" method="_on_button_pressed"]
+[connection signal="pressed" from="Control/IndexPage/LoadIssue" to="Control/GenericEntry" method="_on_load_issue_pressed"]
+[connection signal="pressed" from="Control/IndexPage/SaveIssue" to="Control/GenericEntry" method="_on_save_issue_pressed"]
+[connection signal="pressed" from="Control/GenericEntry/SubtractComic" to="Control/GenericEntry" method="_on_subtract_comic_pressed"]
+[connection signal="pressed" from="Control/GenericEntry/Cancel" to="Control/GenericEntry" method="_on_cancel_pressed"]
+[connection signal="pressed" from="Control/GenericEntry/Pick File" to="Control/GenericEntry" method="_on_pick_file_pressed"]
+[connection signal="text_changed" from="Control/GenericEntry/Pick File/FilePath" to="Control/GenericEntry" method="_on_file_path_text_changed"]
+[connection signal="file_selected" from="Control/GenericEntry/Pick File/FilePath/FileDialog" to="Control/GenericEntry" method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="Control/GenericEntry/Pick Thumbnail" to="Control/GenericEntry" method="_on_pick_thumbnail_pressed"]
+[connection signal="file_selected" from="Control/GenericEntry/Pick Thumbnail/ThumbnailPath/thumbnailDialog" to="Control/GenericEntry" method="_on_thumbnail_dialog_file_selected"]
+[connection signal="text_changed" from="Control/GenericEntry/TitleName" to="Control/GenericEntry" method="_on_title_name_text_changed"]
+[connection signal="pressed" from="Control/GenericEntry/AddEntry" to="Control/GenericEntry" method="_on_add_entry_pressed"]
+[connection signal="item_selected" from="Control/GenericEntry/OptionButton" to="Control/GenericEntry" method="_on_option_button_item_selected"]
+[connection signal="file_selected" from="Control/GenericEntry/SaveIssueDialog" to="Control/GenericEntry" method="_on_save_issue_dialog_file_selected"]
+[connection signal="file_selected" from="Control/GenericEntry/LoadIssueDialog" to="Control/GenericEntry" method="_on_load_issue_dialog_file_selected"]

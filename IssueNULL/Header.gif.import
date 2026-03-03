@@ -1,0 +1,14 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://ofi3c7twfnw"
+valid=false
+
+[deps]
+
+source_file="res://IssueNULL/Header.gif"
+
+[params]
+
+frames_per_second=30

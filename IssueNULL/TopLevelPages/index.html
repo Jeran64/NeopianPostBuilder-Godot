@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+    
+    @font-face 
+    {
+      font-family: 'jackwriteregular';
+      src: url('Resources/jackwrite-webfont.woff2') format('woff2'),
+           url('Resources/jackwrite-webfont.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    .pageHeader
+    {
+      height: 280px;
+    }
+    .WelcomeBox
+    {
+      background-color: #707d7b; /* bluegrey color */
+      justify-content: center;
+      align-items: center;
+    }
+    .WelcomeText 
+    {
+      
+      display: flex;
+      font-family: 'jackwriteregular', monospace;
+      font-size: 140pt;
+      text-align: center;
+    }
+    body 
+    {
+      margin: 0;
+      padding: 0;
+      background-image: url('WelcomeBackground.png');
+      background-repeat: no-repeat;
+      background-position-x: center;
+      background-position-y: 700px;
+    }
+    
+    </style>
+
+    <title>The Neopian Post</title>
+    <body bgcolor="lightgrey">
+    
+    <TABLE width="700" cellpadding="0" cellspacing="0" border="0">
+  	<TR>
+  		<TD align="right" class="pageHeader">&nbsp;</TD>
+  	</TR>
+    </TABLE>
+
+    <DIV align="center">
+	  <DIV class="outer">
+    <TABLE class="main" cellpadding="1" cellspacing="1" border="1">
+  	<!-- Top nav -->
+    	<TR>
+    		<TD>
+        	<table class="WelcomeBox" width="100%" cellpadding="2" cellspacing="2" border="2" align="center">
+            <tr>
+              <td align="center">
+                <div class="WelcomeText" style="color:#20282f; font-family: jackwriteregular; font-size: 140px;">
+                  The Neopian Post 
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="color:#40481f; font-family: jackwriteregular; font-size: 22px" align="center">
+                  Your Local Internet Publication of Neopian Randomness. <a href="Issue0/Index.html">Click for the latest issue! </a>
+                </div>
+              </td>
+              <tr>
+                <td bgcolor="#d8edff" style="text-align: right;">
+                  <a href="https://neopianpost.neocities.org/Archives">Click here for the back catalogue!   . . . . .  </a>
+                </td>
+              </tr>
+            </tr>
+            
+            <!--Lisence and copyright info for the fonts used can be found here! https://neopianpost.neocities.org/Resources/FontLisenceAndCopyRight.txt -->
+          </table>
+    		</TD>
+    	</TR>
+    </TABLE>
+    </DIV>
+    </DIV>
+      <br><br><br>
+                <table align="center" style="border: 4px double #333333;border-top-left-radius: 10px;border-radius: 10px;" ><thead>
+            <tr>
+              <th colspan="3" bgcolor="gold">Important Dates:</th>
+            </tr></thead>
+          <tbody>
+            <tr bgcolor="white">
+              <td>Submission Deadline:</td>
+              <td colspan="2"> <div id="deadline">March 10, 2026</div></td>
+            </tr>
+            <tr bgcolor="white">
+              <td colspan="3" align="center" style="border-bottom: solid 2px #333333"><div id="countdown"></div></td>
+            </tr>
+            <tr bgcolor="white" >
+              <td >Publish Date:</td>
+              <td colspan="2">March 20th</td>
+            </tr>
+            <tr>
+              <td colspan="3" align="center" bgcolor="lightblue" style="border-top: solid 3px #333333">Notes for the Upcoming Issue:<br></td>
+            </tr>
+            <tr>
+              <td colspan="3" bgcolor="white">Inagural Issue! Feel free to submit a few things <br>that were rejected from creative contests prior!</td>
+            </tr>
+          </tbody>
+          </table>
+
+
+
+    <script>
+        function updateCountdown() {
+            // Get the deadline date from the div
+            const deadlineDiv = document.getElementById('deadline');
+            const deadlineDate = new Date(deadlineDiv.textContent);
+            
+            // Get current date
+            const currentDate = new Date();
+            
+            // Calculate difference in milliseconds
+            const diffTime = deadlineDate - currentDate;
+            
+            // Convert to days
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            // Display the result
+            const countdownDiv = document.getElementById('countdown');
+            if (diffDays > 0) {
+                countdownDiv.textContent = `Days until deadline: ${diffDays}`;
+            } else if (diffDays === 0) {
+                countdownDiv.textContent = "Today is the deadline!";
+            } else {
+                countdownDiv.textContent = `Deadline has passed! (but contact the editor, there might still be time to sneak it in) ${deadlineDate}`;
+            }
+        }
+        
+        // Wait for the page to load completely
+         window.addEventListener('load', function(){ updateCountdown(); });
+    </script>     
+
+    </body>
+</html>
+

@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://cogf6xpydn171"
+path="res://.godot/imported/Submit.gif-df7e1c73c5f5e3a277c4711ca1cd5c5e.tres"
+
+[deps]
+
+source_file="res://IssueNULL/Submit.gif"
+dest_files=["res://.godot/imported/Submit.gif-df7e1c73c5f5e3a277c4711ca1cd5c5e.tres"]
+
+[params]
+
+frames_per_second=30

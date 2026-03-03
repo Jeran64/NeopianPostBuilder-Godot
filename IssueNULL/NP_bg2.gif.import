@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://bibv6gcq7aiwf"
+path="res://.godot/imported/NP_bg2.gif-e7d12a32e36efd91532d11be5aec3bfc.tres"
+
+[deps]
+
+source_file="res://IssueNULL/NP_bg2.gif"
+dest_files=["res://.godot/imported/NP_bg2.gif-e7d12a32e36efd91532d11be5aec3bfc.tres"]
+
+[params]
+
+frames_per_second=30
