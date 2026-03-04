@@ -1,3 +1,4 @@
+This project was built using Godot 4.5!
 
 1. To add entries, select a type. (Different types will require different information to be considered complete.)
 2. Fill in all of the data as relevant.
