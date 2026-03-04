@@ -1,4 +1,3 @@
-Run the NeopianPostBuilder.exe or NeopianPostBuilder.sh to execute the program.
 
 1. To add entries, select a type. (Different types will require different information to be considered complete.)
 2. Fill in all of the data as relevant.
@@ -6,9 +5,10 @@ Run the NeopianPostBuilder.exe or NeopianPostBuilder.sh to execute the program.
     * Incomplete entries will save to the "Incomplete" category and can be completed later.
     * Complete entries will save to thier indicated categories.
 4. To edit an entry, click on the entry in the category. 
-    *Hit Save to save any changes.
-    *Hit Cancel to cancel any changes, or escape to make a new entry.
-    *Hit Delete to delete the entry from the issue. (There is no undo!)
+    * Hit Save to save any changes.
+    * Hit Cancel to cancel any changes, or escape to make a new entry.
+    * Hit Delete to delete the entry from the issue. (There is no undo!)
+    * Click the tiny Up and Down arrows to the left of entries to rearrange them. 
 5. Click "Save Issue" to save the progress of building the current issue. Pick a file name (ex:"Issue15") to save it as a .txt file.
     * Hit "Load Issue" to load a previously saved issue, and resume where you left off.
 6. Fill in the Issue#
@@ -23,3 +23,4 @@ Run the NeopianPostBuilder.exe or NeopianPostBuilder.sh to execute the program.
     1. Update the latest issue link
     2. Update the new deadlines.
     
+March 3rd 2026

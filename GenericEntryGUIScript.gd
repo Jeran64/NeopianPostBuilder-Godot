@@ -37,6 +37,7 @@ extends Control
 @onready var rootObject: Node2D = $"../.."
 @onready var first_build: CheckButton = $"../IndexPage/firstBuild"
 @onready var link: LineEdit = $Link
+@onready var order_navigation: Control = $OrderNavigation
 
 
 
@@ -312,7 +313,28 @@ func clearEnteredData() -> void:
 	pick_file.disabled=true;#these flags set to default entry
 	comic_preview.visible=false;
 	submission_text.visible=true;
+	order_navigation.visible=false;
 
+func getEntryTypeList(submissionType) -> Array:
+	print("looking for a container match for ", submissionType);
+	match submissionType:
+		"Comics":
+			return Comics;
+		"Articles":
+			return Articles
+		"ContinuedSeries":
+			return ContinuedSeries
+		"NewSeries":
+			return NewSeries
+		"ShortStories":
+			return ShortStories
+		"Poetry":
+			return Poetry
+		"FanArt":
+			return FanArt
+		_:
+			return Incomplete; #also works as a catchall
+			
 func getCorrectContainer(submissionType) -> VBoxContainer:
 	print("looking for a container match for ", submissionType);
 	match submissionType:
@@ -422,6 +444,9 @@ func _load_media_details(nodeClicked) -> void:
 	print("Loading details.")
 	var type=nodeClicked.get_parent().get_parent().get_parent().name#a bit of a hack to load the type. functional :3
 	var index=nodeClicked.get_index(true) 
+	order_navigation.visible=true;#make the navigator visible
+	order_navigation.position.y=nodeClicked.global_position.y #make it inline of the node currently selected, so it appears in the right spot
+	#nodeClicked.add_child(order_navigation);
 	buttonCurrentlySelected=nodeClicked;
 	print("getting the ", index, " file of type: ",type)
 	#load the data from the database into thier GUI slots
@@ -745,3 +770,105 @@ func _on_save_issue_dialog_file_selected(chosenDirectory: String) -> void:
 	print(saveOutput)
 	save_to_file(chosenDirectory,saveOutput);
 #func loading
+
+func clickedArrangeUp():
+	#get info about the current selection
+	var type=buttonCurrentlySelected.get_parent().get_parent().get_parent().name#a bit of a hack to load the type. functional :3
+	var index=buttonCurrentlySelected.get_index(true) 
+	#print("index:",index, "position: ",buttonCurrentlySelected.global_position.y, " name: ",buttonCurrentlySelected.text)
+	if(index>0):#this prevents it from working out of bounds
+		match type:
+			"Comics":
+				var holding=Comics[index];
+				Comics[index]=Comics[index-1];
+				Comics[index-1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index-1);#also move the button up by one. the vContainer should rearrange.
+			"Articles":
+				var holding=Articles[index];
+				Articles[index]=Articles[index-1];
+				Articles[index-1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index-1);#also move the button up by one. the vContainer should rearrange.
+			"ContinuedSeries":
+				var holding=ContinuedSeries[index];
+				ContinuedSeries[index]=ContinuedSeries[index-1];
+				ContinuedSeries[index-1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index-1);#also move the button up by one. the vContainer should rearrange.
+			"NewSeries":
+				var holding=NewSeries[index];
+				NewSeries[index]=NewSeries[index-1];
+				NewSeries[index-1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index-1);#also move the button up by one. the vContainer should rearrange.
+			"ShortStories":
+				var holding=ShortStories[index];
+				ShortStories[index]=ShortStories[index-1];
+				ShortStories[index-1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index-1);#also move the button up by one. the vContainer should rearrange.
+			"Poetry":
+				var holding=Poetry[index];
+				Poetry[index]=Poetry[index-1];
+				Poetry[index-1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index-1);#also move the button up by one. the vContainer should rearrange.
+			"FanArt":
+				var holding=FanArt[index];
+				FanArt[index]=FanArt[index-1];
+				FanArt[index-1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index-1);#also move the button up by one. the vContainer should rearrange.
+			_:#Incomplete also works as a catchall
+				var holding=Incomplete[index];
+				Incomplete[index]=Incomplete[index-1];
+				Incomplete[index-1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index-1);#also move the button up by one. the vContainer should rearrange.
+		# currentlySelected is the entry Object.
+	#order_navigation.global_position.y=buttonCurrentlySelected.global_position.y #make it inline of the node currently selected, so it appears in the right spot
+	#print("End index:",buttonCurrentlySelected.get_index(true) , " position: ",buttonCurrentlySelected.global_position.y, " name: ",buttonCurrentlySelected.text)
+	
+func clickedArrangeDown():
+		#get info about the current selection
+	var type=buttonCurrentlySelected.get_parent().get_parent().get_parent().name#a bit of a hack to load the type. functional :3
+	var index=buttonCurrentlySelected.get_index(true) 
+	#print("Start index:",index, " position: ",buttonCurrentlySelected.global_position.y, " name: ",buttonCurrentlySelected.text)
+	if(index<buttonCurrentlySelected.get_parent().get_child_count()-1):#this prevents it from working out of bounds
+		match type:
+			"Comics":
+				var holding=Comics[index];
+				Comics[index]=Comics[index+1];
+				Comics[index+1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index+1);#also move the button up by one. the vContainer should rearrange.
+			"Articles":
+				var holding=Articles[index];
+				Articles[index]=Articles[index+1];
+				Articles[index+1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index+1);#also move the button up by one. the vContainer should rearrange.
+			"ContinuedSeries":
+				var holding=ContinuedSeries[index];
+				ContinuedSeries[index]=ContinuedSeries[index+1];
+				ContinuedSeries[index+1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index+1);#also move the button up by one. the vContainer should rearrange.
+			"NewSeries":
+				var holding=NewSeries[index];
+				NewSeries[index]=NewSeries[index+1];
+				NewSeries[index+1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index+1);#also move the button up by one. the vContainer should rearrange.
+			"ShortStories":
+				var holding=ShortStories[index];
+				ShortStories[index]=ShortStories[index+1];
+				ShortStories[index+1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index+1);#also move the button up by one. the vContainer should rearrange.
+			"Poetry":
+				var holding=Poetry[index];
+				Poetry[index]=Poetry[index+1];
+				Poetry[index+1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index+1);#also move the button up by one. the vContainer should rearrange.
+			"FanArt":
+				var holding=FanArt[index];
+				FanArt[index]=FanArt[index+1];
+				FanArt[index+1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index+1);#also move the button up by one. the vContainer should rearrange.
+			_:#Incomplete also works as a catchall
+				var holding=Incomplete[index];
+				Incomplete[index]=Incomplete[index+1];
+				Incomplete[index+1]=holding;
+				getCorrectContainer(type).move_child(buttonCurrentlySelected,index+1);#also move the button up by one. the vContainer should rearrange.
+		# currentlySelected is the entry Object.
+	#order_navigation.global_position.y=buttonCurrentlySelected.global_position.y #make it inline of the node currently selected, so it appears in the right spot
+	#print("End index:",buttonCurrentlySelected.get_index(true) , " position: ",buttonCurrentlySelected.global_position.y, " name: ",buttonCurrentlySelected.text)
